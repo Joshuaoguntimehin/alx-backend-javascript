@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ed97baa494289768901384d4059fbec9506a817
 module.exports = {
   env: {
     browser: false,
@@ -36,3 +39,7 @@ module.exports = {
     }
   ]
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ed97baa494289768901384d4059fbec9506a817
