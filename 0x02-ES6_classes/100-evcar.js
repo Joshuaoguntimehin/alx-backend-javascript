@@ -1,16 +1,12 @@
-import Car from './10-car.js';
+import Car from './10-car';
 
-class EVCar extends Car {
-    constructor(brand, motor, color, range) {
-        super(brand); // Call the constructor of Car with brand
-        this._motor = motor;
-        this._color = color;
-        this._range = range;
-    }
+export default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    super(brand, motor, color);
+    this._range = range;
+  }
 
-    // Override the cloneCar method
-    cloneCar() {
-        // Instead of returning an EVCar, return a new Car instance
-        return new Car(this._brand); // Assuming Car constructor accepts brand
-    }
+  static get [Symbol.species]() {
+    return Car;
+  }
 }
