@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""function in duc"""
 def pascal_triangle(n):
     if n <= 0:
         return []
