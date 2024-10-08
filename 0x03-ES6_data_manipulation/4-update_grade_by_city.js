@@ -6,7 +6,7 @@ export default function updateStudentGradeByCity(students, city, newGrades) {
         // If a matching grade is found, update it; otherwise, keep the original grade
         return {
           ...student,
-          grade: gradeUpdate ? gradeUpdate.grade : student.grade
+          grade: gradeUpdate ? gradeUpdate.grade : student.grade || 'N/A'
         };
       });
     }
