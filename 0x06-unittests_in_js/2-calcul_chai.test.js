@@ -1,32 +1,37 @@
-const assert = require('assert');
-const calculateNumber = require('./1-calcul');
+import { expect } from 'chai';
+import calculateNumber from './2-calcul_chai.test';
 
 describe('calculateNumber', () => {
   describe('SUM', () => {
-    it('should return 6 when inputs are 1.4 and 4.5', () => {
-      assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
+    it('returns 6 for inputs 1.4 and 4.5', () => {
+      const result = calculateNumber('SUM', 1.4, 4.5);
+      expect(result).to.equal(6);
     });
   });
 
   describe('SUBTRACT', () => {
-    it('should return -4 when inputs are 1.4 and 4.5', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 1.4, 4.5), -4);
+    it('returns -4 for inputs 1.4 and 4.5', () => {
+      const result = calculateNumber('SUBTRACT', 1.4, 4.5);
+      expect(result).to.equal(-4);
     });
   });
 
   describe('DIVIDE', () => {
-    it('should return 0.2 when inputs are 1.4 and 4.5', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
+    it('returns 0.2 for inputs 1.4 and 4.5', () => {
+      const result = calculateNumber('DIVIDE', 1.4, 4.5);
+      expect(result).to.equal(0.2);
     });
 
-    it('should throw an error when dividing by 0', () => {
-      assert.throws(() => calculateNumber('DIVIDE', 1.4, 0), /Cannot divide by zero/);
+    it('throws an error when dividing by 0', () => {
+      const action = () => calculateNumber('DIVIDE', 1.4, 0);
+      expect(action).to.throw('Cannot divide by zero');
     });
   });
 
   describe('Invalid Operation', () => {
-    it('should throw an error for invalid operation', () => {
-      assert.throws(() => calculateNumber('DEVIDE', 1.4, 4.5), /Invalid operation/);
+    it('throws an error for invalid operation', () => {
+      const action = () => calculateNumber('DEVIDE', 1.4, 4.5);
+      expect(action).to.throw('Invalid operation');
     });
   });
 });
