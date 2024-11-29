@@ -1,3 +1,4 @@
+// Call done when the test has finished successfully
 const getPaymentTokenFromAPI = require('./6-payment_token.js'); // Adjust path as necessary
 
 describe('getPaymentTokenFromAPI', () => {
