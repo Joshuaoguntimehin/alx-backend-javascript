@@ -1,20 +1,21 @@
-function calculateNumber(type, a, b) {
-    const numA = Math.round(a);
-    const numB = Math.round(b);
-  
-    if (type === 'SUM') {
-      return numA + numB;
-    } else if (type === 'SUBTRACT') {
-      return numA - numB;
-    } else if (type === 'DIVIDE') {
-      if (numB === 0) {
-        return 'Error'; // Or throw new Error('Cannot divide by zero');
-      }
-      return numA / numB;
-    } else {
-      throw new Error('Invalid operation');
-    }
+// 2-calcul_chai.js
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Division by zero");
   }
-  
-  module.exports = calculateNumber;
-  
+  return a / b;
+}
+
+module.exports = { add, subtract, multiply, divide };

@@ -1,25 +1,48 @@
 // 2-calcul_chai.test.js
-(async () => {
-    const chai = await import('chai');
-    const calculateNumber = require('./2-calcul_chai.js');
-    const expect = chai.expect;  // Using Chai's expect style
+let chai;
+let calcul;
+
+before(async () => {
+  // Dynamically import chai
+  const chaiModule = await import('chai');
+  chai = chaiModule.expect;
   
-    describe('calculateNumber', function () {
-      it('should return the sum of two rounded numbers', function () {
-        expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
-      });
-  
-      it('should return the result of subtracting the two rounded numbers', function () {
-        expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
-      });
-  
-      it('should return the result of dividing the two rounded numbers', function () {
-        expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
-      });
-  
-      it('should return "Error" when dividing by zero', function () {
-        expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
-      });
+  // Import your calculator module normally
+  calcul = require('./2-calcul_chai.js');
+});
+
+describe('Calculator Tests with Chai', function () {
+  describe('Addition Tests', function () {
+    it('should add two numbers correctly', function () {
+      const result = calcul.add(2, 3);
+      chai(result).to.equal(5);
     });
-  })();
-  
+  });
+
+  describe('Subtraction Tests', function () {
+    it('should subtract two numbers correctly', function () {
+      const result = calcul.subtract(5, 3);
+      chai(result).to.equal(2);
+    });
+  });
+
+  describe('Multiplication Tests', function () {
+    it('should multiply two numbers correctly', function () {
+      const result = calcul.multiply(2, 3);
+      chai(result).to.equal(6);
+    });
+  });
+
+  describe('Division Tests', function () {
+    it('should divide two numbers correctly', function () {
+      const result = calcul.divide(6, 3);
+      chai(result).to.equal(2);
+    });
+
+    it('should throw an error when dividing by zero', function () {
+      chai(() => {
+        calcul.divide(6, 0);
+      }).to.throw('Division by zero');
+    });
+  });
+});
